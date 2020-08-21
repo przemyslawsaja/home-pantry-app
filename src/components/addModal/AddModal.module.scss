@@ -1,0 +1,25 @@
+.wrapper {
+  background-color: #12141E;
+  position: fixed;
+  top: 50%;
+  width: 100%;
+  box-shadow: 0 20px 40px -10px rgba(black, .3);
+  transform: translateY(-50%);
+}
+.Options {
+  display: flex;
+  justify-content: space-between;
+  Button {
+    position: relative;
+
+  }
+}
+.background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.8;
+}
