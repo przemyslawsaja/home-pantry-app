@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './AddForm.module.scss'
 import Button from "../Button/Button";
 import BackButton from "../Button/BackButton";
-import AppContext from "../../context";
 
 const units = {
     kg: "kg",
@@ -11,100 +10,77 @@ const units = {
     l: "l",
     pc: "pc"
 };
-class AddForm extends React.Component {
-    state = {
+
+const AddForm = ({toggleModal,addItem}) => {
+    const [product, setProduct] = useState({
         name: '',
-        quantity: '1',
+        quantity: 1,
         unit: units.g,
         limit: 3,
-        toBuy: 0
-    };
+    })
 
-    toBuy = () => {
-        const left = this.state.limit - this.state.quantity;
-        this.setState({
-            toBuy: left
+    const submitHandle = () => {
+        console.log(product);
+    }
+    const handleInputChange = (e) => {
+        e.preventDefault();
+        setProduct({
+            ...product,
+            [e.target.name]: e.target.value
         })
-    };
-    handleInputChange = e => {
-       this.setState({
-           [e.target.name]: e.target.value
-       });
-
-    };
-    handleSelectChange = e => {
-        console.log(e.target.value);
-        this.setState({
+    }
+    const handleSelectChange = e => {
+        setProduct({
+            ...product,
             unit: e.target.value
         });
     };
 
-    ResetForms = () => {
-        this.setState({
-            name: '',
-            quantity: '',
-            unit: '',
-        })
-    };
-
-    render() {
         return (
-            <AppContext.Consumer>
-                {(context) => (
                     <div className={styles.wrapper}>
-                        <form
-                            autoComplete="off"
-                            className ={styles.addForm}
-                            >
-                            <label htmlFor={this.state.name}>Product name:</label>
+                        <form autoComplete="off" className ={styles.addForm} >
+                            <label htmlFor={product.name}>Product name:</label>
                             <input
-                            name = "name"
-                            value = {this.state.name}
-                            onChange = {this.handleInputChange}
-                            placeholder="e.g. Bread"
-                            className={styles.addFormInput}
-                            onSubmit = {(e) => {
-                                context.addItem(e, this.state);
-                             }}
+                                name = "name"
+                                value = {product.name}
+                                onChange = {(e) => handleInputChange(e)}
+                                placeholder="e.g. Bread"
+                                className={styles.addFormInput}
+
                             />
 
                             <label>Quantity:</label>
                             <input
                             placeholder = " 2, 3... "
                             name = "quantity"
-                            value = {this.state.quantity}
-                            onChange = {this.handleInputChange}
+                            value = {product.quantity}
+                            onChange = {(e) => handleInputChange(e)}
                             className={styles.addFormInput}
                             />
                             <label>Limit:</label>
                             <input
                                 placeholder=" 5, 6..."
                                 name = "limit"
-                                value = {this.state.limit}
-                                onChange = {this.handleInputChange}
+                                value = {product.limit}
+                                onChange = {e => handleInputChange(e)}
                                 className={styles.addFormInput}
                             />
 
                             <label>Unit:</label>
-                            <select value={this.state.unit} className={styles.select} onChange={this.handleSelectChange}>
+                            <select value={product.unit} className={styles.select} onChange={handleSelectChange}>
                                 <option value={units.g}>grams</option>
                                 <option value={units.kg}>kilograms</option>
                                 <option value={units.ml}>milliliters</option>
                                 <option value={units.l}>liters</option>
                                 <option value={units.pc}>apiece </option>
                             </select>
-                            <Button onClick={(e) => {
-                                context.addItem(e, this.state)
-                            }}>
+                            <Button type='button' onClick={(e) => addItem(e,product)}>
                                 ADD PRODUCT
                             </Button>
                         </form>
-                        <BackButton onClick={context.closeModal}/>
+                        <BackButton onClick={toggleModal}/>
                     </div>
-                )}
-            </AppContext.Consumer>
         );
-    }
 };
 
 export default AddForm;

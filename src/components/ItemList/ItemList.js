@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './ItemList.module.scss';
 import Item from "./Item";
 import { v4 as uuidv4 } from 'uuid';
-const ItemList = ({items}) => {
+const ItemList = ({items, isShoppingList}) => {
     return (
         <>
             {items.length
@@ -13,11 +13,12 @@ const ItemList = ({items}) => {
                             itemName={item.name}
                             itemQuantity={item.quantity}
                             itemUnit={item.unit}
+                            isShoppingList={isShoppingList}
                         />
                     ))}
                 </ul> )
                 : ( <div className={styles.noItems}>
-                         <h1>Your products list is empty :( pleas add some items! </h1>
+                         <h1>Your products list is empty :( please add some items! </h1>
                     </div>)
             }
         </>
