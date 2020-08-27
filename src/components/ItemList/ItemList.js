@@ -1,21 +1,12 @@
 import React from 'react';
 import styles from './ItemList.module.scss';
-import Item from "./Item";
-import { v4 as uuidv4 } from 'uuid';
-const ItemList = ({items, isShoppingList}) => {
+
+const ItemList = ({items, renderItems}) => {
     return (
         <>
             {items.length
                 ? ( <ul className={styles.wrapper}>
-                    {items.map(item => (
-                        <Item
-                            key={uuidv4()}
-                            itemName={item.name}
-                            itemQuantity={item.quantity}
-                            itemUnit={item.unit}
-                            isShoppingList={isShoppingList}
-                        />
-                    ))}
+                    { renderItems }
                 </ul> )
                 : ( <div className={styles.noItems}>
                          <h1>Your products list is empty :( please add some items! </h1>
@@ -25,3 +16,4 @@ const ItemList = ({items, isShoppingList}) => {
     )
 };
 export default ItemList;
+

@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './AddModal.module.scss'
-import AddForm from "../Form/AddForm";
 
 const AddModal = ({children}) => {
     return (

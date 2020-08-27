@@ -19,9 +19,6 @@ const AddForm = ({toggleModal,addItem}) => {
         limit: 3,
     })
 
-    const submitHandle = () => {
-        console.log(product);
-    }
     const handleInputChange = (e) => {
         e.preventDefault();
         setProduct({

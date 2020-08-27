@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import styles from './Root.module.scss';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import AppContext from "../../context";
 import MyPantry from "../myPantry/myPantry";
 import Navigation from "../../components/Navigation/Navigation";
 import Header from "../../components/Header/Header";
@@ -10,6 +9,7 @@ import Settings from "../Settings/Settings";
 
 
 const Root = () => {
+
     const [itemList, setItemList] = useState([]);
     const [shoppingList, setShoppingList] = useState([]);
     const [isModalEnabled, setModalValue] = useState(false)
@@ -24,6 +24,7 @@ const Root = () => {
             newItem
         ])
     }
+
     const UpdateShoppingList = (newItem) => {
         UpdateItemList(newItem)
         setShoppingList([
@@ -37,18 +38,22 @@ const Root = () => {
         toggleModal();
     }
 
+    const removeItem = ( itemName ) => {
+        setItemList(itemList.filter(item => item.name !== itemName));
+        setShoppingList(shoppingList.filter(item => item.name !== itemName));
+    }
 
     return (
         <>
             <Header/>
             <BrowserRouter>
-                <AppContext.Provider>
                     <Switch>
                         <Route exact path="/" component={Navigation}/>
                         <Route path="/myPantry">
                             <MyPantry
                                 toggleModal={toggleModal}
                                 addItem={addItem}
+                                removeItem = {removeItem}
                                 itemList={itemList}
                                 isModalEnabled = {isModalEnabled}
                             />
@@ -58,8 +63,7 @@ const Root = () => {
                         </Route>
                         <Route path="/Settings" component={Settings}/>
                     </Switch>
-                </AppContext.Provider>
-            </BrowserRouter>
+            </BrowserRouter>    
         </>
     )
 }
