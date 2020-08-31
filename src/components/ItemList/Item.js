@@ -19,8 +19,6 @@ const Item = ({itemName, itemQuantity, itemUnit, isShoppingList, removeItem}) =>
                                   </span>
 
                             }
-
-
                         </div>
                     </div>
 
@@ -31,7 +29,10 @@ const Item = ({itemName, itemQuantity, itemUnit, isShoppingList, removeItem}) =>
 Item.propTypes = {
   itemName: PropTypes.string.isRequired,
   itemQuantity: PropTypes.number,
-  itemUnit: PropTypes.string
+  itemUnit: PropTypes.string,
+  isShoppingList: PropTypes.bool,
+  removeItem: PropTypes.func,
+
 };
 Item.defaultProps = {
     itemUnit: null

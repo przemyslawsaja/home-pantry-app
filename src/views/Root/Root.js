@@ -7,7 +7,6 @@ import Header from "../../components/Header/Header";
 import ShoppingList from "../ShoppingList/ShoppingList";
 import Settings from "../Settings/Settings";
 
-
 const Root = () => {
 
     const [itemList, setItemList] = useState([]);
@@ -32,8 +31,7 @@ const Root = () => {
             {...newItem, quantity: newItem.limit - newItem.quantity}
         ])
     }
-    const addItem = ( event, newItem ) => {
-        event.preventDefault();
+    const addItem = ( newItem ) => {
         (newItem.quantity > newItem.limit) ? UpdateItemList(newItem) : UpdateShoppingList(newItem)
         toggleModal();
     }
@@ -51,10 +49,10 @@ const Root = () => {
                         <Route exact path="/" component={Navigation}/>
                         <Route path="/myPantry">
                             <MyPantry
-                                toggleModal={toggleModal}
-                                addItem={addItem}
-                                removeItem = {removeItem}
-                                itemList={itemList}
+                                toggleModal = {toggleModal}
+                                addItem     = {addItem}
+                                removeItem  = {removeItem}
+                                itemList    = {itemList}
                                 isModalEnabled = {isModalEnabled}
                             />
                         </Route>

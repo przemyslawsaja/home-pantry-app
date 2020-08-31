@@ -20,15 +20,28 @@
     font-size: 1.5em;
     color: white;
   }
+  &Select {
+    margin: 20px 0;
+    height: 50px;
+    background-color: #6A6C7A;
+    border: none;
+    font-size: 1.5em;
+    color: white;
+  }
+  &Label {
+    font-size: 1.6em;
+    margin: 15px 0;
+  }
+  &Error {
+    margin: -5px 0 10px;
+    color: #c2452d;
+  }
+
   .addFormInput::placeholder{
     color: darkgray;
     padding-left: 10px;
   }
-  label {
-    font-size: 1.6em;
-    margin: 15px 0;
 
-  }
 }
 .Options {
   width: 80%;
@@ -36,14 +49,7 @@
   justify-content: space-between;
 
 }
-.select {
-  margin: 0 0 20px 0;
-  height: 50px;
-  background-color: #6A6C7A;
-  border: none;
-  font-size: 1.5em;
-  color: white;
-}
+
 Button {
   font-size: 10px;
   margin: 15px;
