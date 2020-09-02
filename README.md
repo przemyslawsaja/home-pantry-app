@@ -9,7 +9,7 @@ shopping list, so user won't forget what he needs to buy being on shopping.
 It will also help to provide buying products that user already has in home.
 
 ## Technologies 
-react, uuid, react-route/react-router-dom, styled-components
+react, hooks, uuid, react-route/react-router-dom, styled-components
 
 ## Available Scripts
 In the project directory, you can run:
