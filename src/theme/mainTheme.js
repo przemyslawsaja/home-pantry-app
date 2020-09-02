@@ -1,0 +1,21 @@
+export const theme = {
+    primary: 'hsl(230, 25%, 9%)',
+    darkPrimary: 'hsl(235, 27%, 10%)',
+    lightPrimary: 'hsl(235, 6%, 61%)',
+    secondary: 'hsl(340, 98%, 74%)',
+    darkSecondary: 'hsl(340, 41%, 53%)',
+    tertiary: 'hsl(233, 7%, 45%)',
+    shoppingList: 'hsl(138, 100%, 69%)',
+    settings: 'hsl(197, 100%, 69%)',
+    error: 'hsl(10, 62%, 47%)',
+    light: 300,
+    bold: 600,
+    fontSize: {
+        xs: '0.8em',
+        s: '1em',
+        m: '1.5em',
+        l: '2em',
+        xl: '2.5em',
+        xxl: '3em',
+    },
+};

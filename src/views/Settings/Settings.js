@@ -1,17 +1,39 @@
 import React from 'react';
-import styles from './Settings.module.scss'
+import styled from "styled-components";
 import { Link } from "react-router-dom";
-import BackButton from "../../components/Button/BackButton";
+import Button from "../../components/Button";
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #84DCFE;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+`
+const SettingsItem = styled.h1`
+  &:hover {
+    color: #6A6C7A;
+    cursor: pointer;
+  }
+  
+  &:active {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    }
+`
 const Settings = () => {
     return (
-        <div className={styles.wrapper}>
-            <h1  className={styles.wrapperItem}>About app</h1>
-            <h1  className={styles.wrapperItem}>Contact Us</h1>
-            <h1  className={styles.wrapperItem}>Coming soon...</h1>
-            <div className={styles.buttonsBack}>
-                <Link to={'/'}><BackButton /></Link>
-            </div>
-        </div>
+        <Wrapper>
+            <SettingsItem> About app </SettingsItem>
+            <SettingsItem> Contact Us </SettingsItem>
+            <SettingsItem> Coming soon... </SettingsItem>
+            <Link to={'/'}> <Button secondary /> </Link>
+        </Wrapper>
     );
 };
 

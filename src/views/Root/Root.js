@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
-import styles from './Root.module.scss';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import MyPantry from "../myPantry/myPantry";
-import Navigation from "../../components/Navigation/Navigation";
-import Header from "../../components/Header/Header";
+import Navigation from "../../components/Navigation";
+import Header from "../../components/Header";
 import ShoppingList from "../ShoppingList/ShoppingList";
 import Settings from "../Settings/Settings";
 
@@ -32,7 +31,7 @@ const Root = () => {
         ])
     }
     const addItem = ( newItem ) => {
-        (newItem.quantity > newItem.limit) ? UpdateItemList(newItem) : UpdateShoppingList(newItem)
+        (newItem.quantity >= newItem.limit) ? UpdateItemList(newItem) : UpdateShoppingList(newItem);
         toggleModal();
     }
 
@@ -49,10 +48,10 @@ const Root = () => {
                         <Route exact path="/" component={Navigation}/>
                         <Route path="/myPantry">
                             <MyPantry
-                                toggleModal = {toggleModal}
-                                addItem     = {addItem}
-                                removeItem  = {removeItem}
-                                itemList    = {itemList}
+                                toggleModal    = {toggleModal}
+                                addItem        = {addItem}
+                                removeItem     = {removeItem}
+                                itemList       = {itemList}
                                 isModalEnabled = {isModalEnabled}
                             />
                         </Route>
